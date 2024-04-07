@@ -32,7 +32,6 @@ client.on('ready', () => {
 
 let numbers = []
 client.on('message', async (msg) => {
-    // Pegar o número do remetente
 
     if(!numbers.includes(msg.from)){
         await msg.reply('Bot in development, ignore this for now 🐒')
