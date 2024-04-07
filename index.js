@@ -8,20 +8,21 @@ const client = new Client({
         type: 'remote',
         remotePath: `https://raw.githubusercontent.com/wppconnect-team/wa-version/main/html/${wwebVersion}.html`,
     },
-
     puppeteer: { 
         headless: true,
         executablePath: '/usr/bin/google-chrome',
         args: ['--disable-gpu', '--no-sandbox'],
-
-    
     },  
+});
+
+client.on('disconnected', (reason) => {
+    console.log('Client was logged out', reason);
+    client.initialize(); 
 });
 
 
 client.on('qr', (qr) => {
     qrcode.generate(qr, { small: true })
-    //send QRCode on api endpoint
     console.log('QR RECEIVED', qr);
 });
 
@@ -32,13 +33,10 @@ client.on('ready', () => {
 
 let numbers = []
 client.on('message', async (msg) => {
-
     if(!numbers.includes(msg.from)){
         await msg.reply('Bot in development, ignore this for now 🐒')
         numbers.push(msg.from) // add on var numbers a msg.from
     }
-
-
 });
 
 client.initialize();
