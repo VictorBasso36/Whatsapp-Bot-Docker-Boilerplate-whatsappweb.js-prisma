@@ -20,8 +20,11 @@ RUN npm install
 # Expose the port your application runs on
 EXPOSE 3000
 
+# Declare the volume for bot auth
+VOLUME /app/.wwebjs_auth
+
 # Start your Node.js application
-CMD ["node", "index.js"]
+CMD ["node --watch ."]
 
 
 
