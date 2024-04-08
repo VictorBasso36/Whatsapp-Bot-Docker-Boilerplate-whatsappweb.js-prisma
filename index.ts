@@ -1,6 +1,6 @@
-const qrcode = require('qrcode-terminal')
-const {  MessageOptions } = require('whatsapp-web.js');
-const { Client, LocalAuth, Buttons, MessageMedia } = require('whatsapp-web.js')
+import qrcode from 'qrcode-terminal';
+import { Client, LocalAuth, Message } from 'whatsapp-web.js';
+
 const wwebVersion = '2.2407.3';
 const client = new Client({
     authStrategy: new LocalAuth(),
@@ -15,13 +15,13 @@ const client = new Client({
     },  
 });
 
-client.on('disconnected', (reason) => {
+client.on('disconnected', (reason: string) => {
     console.log('Client was logged out', reason);
     client.initialize(); 
 });
 
 
-client.on('qr', (qr) => {
+client.on('qr', (qr: string) => {
     qrcode.generate(qr, { small: true })
     console.log('QR RECEIVED', qr);
 });
@@ -31,8 +31,8 @@ client.on('ready', () => {
 });
 
 
-let numbers = []
-client.on('message', async (msg) => {
+let numbers: string[] = []
+client.on('message', async (msg: Message) => {
     if(!numbers.includes(msg.from)){
         await msg.reply('Bot in development, ignore this for now 🐒')
         numbers.push(msg.from) // add on var numbers a msg.from

@@ -24,7 +24,7 @@ EXPOSE 3000
 VOLUME /app/.wwebjs_auth
 
 # Start your Node.js application
-CMD ["node --watch ."]
+CMD ["node", "dist/index.js"]
 
 
 
