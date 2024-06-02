@@ -1,7 +1,9 @@
 
-# Whatsapp Web Bot - Docker simple run
+# Rodando um Whatsapp Bot no docker da maneira mais simples possivel:
+# Whatsapp Web Bot - Docker simple run 
 
 Whatsapp bot running on Docker with all dependency issues resolved (2024/04); In the simplest way possible!
+Executando um Whatsapp Bot (whatsapp-web.js) no docker da maneira mais simples.
 
 # how to run? Just run the following commands:
 
